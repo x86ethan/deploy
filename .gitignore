@@ -1,0 +1,62 @@
+# ------------------------------
+# 1. IGNORER LES BINAIRS RUST ET LE BUILD CARGO
+# ------------------------------
+# Le dossier de build standard
+**/target/
+
+# Packages/tests générés par Cargo
+Cargo.lock
+
+# Cache Cargo (surtout pour les tests, builds locales)
+.cargo-bench/
+
+# ------------------------------
+# 2. IGNORER LES FICHIERS PYTHON
+# ------------------------------
+# Fichiers compilés (.pyc, .pyo, etc.)
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environnements virtuels (venv/env)
+.venv/
+venv/
+env/
+/parser/.venv/
+/parser/env/
+
+# Logs et documentation
+*.log
+*.pot
+*.mo
+
+# Caches Pytest
+.pytest_cache/
+
+# Fichiers de gestion de paquets (si tu n'utilises pas Poetry/Hatch)
+*.egg-info/
+.eggs/
+
+# Fichiers temporaires des IDE Python (PyCharm, VS Code)
+.idea/
+.vscode/
+
+# ------------------------------
+# 3. IGNORER LES OS/PLATFORMES (macOS, Windows, Linux)
+# ------------------------------
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+ehthumbs.db
+
+# Linux/Unix
+# Fichiers swap Vim/Emacs, etc.
+*~
+# Fichiers de backup/temporaires
+\#*
+
+# Fichiers temporaires pour éditeurs courants
+*.swp
