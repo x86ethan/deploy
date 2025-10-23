@@ -41,6 +41,8 @@ env/
 .idea/
 .vscode/
 
+poetry.lock
+
 # ------------------------------
 # 3. IGNORER LES OS/PLATFORMES (macOS, Windows, Linux)
 # ------------------------------
