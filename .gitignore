@@ -33,6 +33,8 @@ env/
 # Caches Pytest
 .pytest_cache/
 
+*.code-workspace
+
 # Fichiers de gestion de paquets (si tu n'utilises pas Poetry/Hatch)
 *.egg-info/
 .eggs/
