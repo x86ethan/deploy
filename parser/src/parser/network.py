@@ -49,13 +49,14 @@ def validatePort(port: int):
 # Abstract network configuration
 class NetworkConfiguration:
 
-    def __init__(self, externalPorts: list = None):
+    def __init__(self, externalPorts: list = None, dns: str = None):
         self.external_ports = externalPorts 
+        self.dns = dns
 
 class StaticConfiguration(NetworkConfiguration):
 
-    def __init__(self, ip: str, gateway: str, externalPorts: list = None):
-        super.__init__(externalPorts)
+    def __init__(self, ip: str, gateway: str, externalPorts: list = None, dns: str = None):
+        super.__init__(externalPorts, dns)
         
         if validateIP(ip):
             self.ip = ip
@@ -71,24 +72,24 @@ class StaticConfiguration(NetworkConfiguration):
 # DHCP Configuration
 class DHCPConfiguration(NetworkConfiguration):
 
-    def __init__(self, server: int, externalPorts: list = None):
-        super.__init__(externalPorts)
+    def __init__(self, server: int, externalPorts: list = None, dns: str = None):
+        super.__init__(externalPorts, dns)
 
         if validateIP(server):
             self.server = server
 
 class StaticWirelessConfiguration(StaticConfiguration):
 
-    def __init__(self, ssid: str, wpa: str, ip: str, gateway: str, externalPorts: list = None):
-        super.__init__(ip, gateway, externalPorts)
+    def __init__(self, ssid: str, wpa: str, ip: str, gateway: str, externalPorts: list = None, dns: str = None):
+        super.__init__(ip, gateway, externalPorts, dns)
 
         self.ssid = ssid
         self.wpa = wpa
 
 class DHCPWirelessConfiguration(DHCPConfiguration):
 
-    def __init__(self, ssid: str, wpa: str, server: int, externalPorts: list = None):
-        super.__init__(server, externalPorts)
+    def __init__(self, ssid: str, wpa: str, server: int, externalPorts: list = None, dns: str = None):
+        super.__init__(server, externalPorts, dns)
 
         self.ssid = ssid
         self.wpa = wpa
