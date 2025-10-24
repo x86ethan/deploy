@@ -75,7 +75,7 @@ class StaticConfiguration(NetworkConfiguration):
 # DHCP Configuration
 class DHCPConfiguration(NetworkConfiguration):
 
-    def __init__(self, interfaceType: InterfaceType, externalPorts: list = None, server: int):
+    def __init__(self, interfaceType: InterfaceType, server: int, externalPorts: list = None):
         super.__init__(interfaceType, externalPorts)
 
         if validateIP(server):
