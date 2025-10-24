@@ -11,9 +11,17 @@ class Machine:
 
 class VirtualMachine(Machine):
 
-    def __init__(self, name: str, os: str, networkConfiguration: list, cpu: int, ram: int):
-        super.__init__(name, os, networkConfiguration)
+    def __init__(self, name: str, os: str, cpu: int, ram: int, networkConfigurations: list = None):
+        super.__init__(name, os, networkConfigurations)
         
         self.cpu = cpu
         self.ram = ram
+
+class PhysicalMachine(Machine):
+
+    def __init__(self, name: str, os: str, networkConfigurations: list = None):
+        super.__init__(name, os, networkConfigurations)
+
+        # Given network configurations will be needed to match the machine's amount of interfaces of each type.
+
 
