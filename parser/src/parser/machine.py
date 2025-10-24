@@ -4,7 +4,7 @@ from network import NetworkConfiguration
 
 class Machine:
 
-    def __init__(self, name: str, os: str, networkConfiguration: list): 
+    def __init__(self, name: str, os: str, networkConfigurations: list = None): 
 
         self.name = name
         self.os = os
@@ -17,4 +17,3 @@ class VirtualMachine(Machine):
         self.cpu = cpu
         self.ram = ram
 
-        
