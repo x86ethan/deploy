@@ -1,5 +1,4 @@
-from parser.network import validateIP
-
+from parser.network import validateIP, validatePort
 
 def test_validate_ip_valid():
     """Tests a valid CIDR IP address."""
@@ -32,3 +31,15 @@ def test_validate_ip_too_few_octets():
 def test_validate_ip_too_many_octets():
     """Tests an IP with more than 4 octets."""
     assert validateIP("0.0.0.0.0/32") is False
+
+def test_validate_negative_port():
+    """Tests a negative port number."""
+    assert validatePort(-1) is False
+
+def test_validate_port_too_high():
+    """Tests a port number greater than 65535."""
+    assert validatePort(65536) is False
+
+def test_validate_port_valid():
+    """Tests a valid port number."""
+    assert validatePort(80) is True
