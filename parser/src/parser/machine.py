@@ -8,6 +8,7 @@ class Machine:
 
         self.name = name
         self.os = os
+        self.networkConfigurations = networkConfigurations
 
 class VirtualMachine(Machine):
 
