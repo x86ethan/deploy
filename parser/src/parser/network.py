@@ -36,7 +36,16 @@ def validateIP(ip: str):
     
     return True
         
+def validatePort(port: int):
 
+    try:
+        p = int(port)
+        if p >= 0 and p <= 65535:
+            return True
+        else:
+            return False
+    except ValueError:
+        return False
         
     
 
