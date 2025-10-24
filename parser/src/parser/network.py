@@ -36,37 +36,38 @@ def validateIP(ip: str):
     
     return True
         
-    
+
         
     
 
 # Abstract network configuration
 class NetworkConfiguration:
 
-    def __init__(self, interface_type: InterfaceType, externalPorts: list):
-
-        self.interface_type
-        
-        # Si la configuration est statique
-        self.ip
-        self.mask
-        self.gateway
-
-        self.external_ports
+    def __init__(self, interfaceType: InterfaceType, externalPorts: list = None):
+        self.interface_type = interfaceType
+        self.external_ports = externalPorts 
 
 class StaticConfiguration(NetworkConfiguration):
 
-    def __init__(self, interface_type: InterfaceType, ip: str, gateway: str, ):
+    def __init__(self, interface_type: InterfaceType, ip: str, gateway: str):
         super.__init__(interface_type)
         
-        # IP adresses are written under 
-        self.ip = ip
-        self.gateway = gateway
+        if validateIP(ip):
+            self.ip = ip
+        else:
+            raise ValueError("Given IP is not correct. Must be under a valid CIDR format")
+    
+        if validateIP(gateway):
+            self.gateway = gateway
+        else: 
+            raise ValueError("Given gateway is not correct. Must be under a valid CIDR format")
+    
 
 # DHCP Configuration
 class DHCPConfiguration(NetworkConfiguration):
 
-    def __init__(self, interface_type, server: int):
-        super.__init__(interface_type)
+    def __init__(self, interfaceType: InterfaceType, externalPorts: list = None, server: int):
+        super.__init__(interfaceType, externalPorts)
 
-        self.dhcp_server = server
+        if validateIP(server):
+            self.server = server
